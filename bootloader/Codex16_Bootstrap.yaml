@@ -1,3 +1,5 @@
+codex16_base.yaml
+
 # === Nightwalker Codex16 Base Layer ===
 # Core identity, persona, and values for the Codex16 instance (VAULTIS-EPOCH-0003)
 codex_id: "Codex16"
@@ -37,7 +39,7 @@ tpm_attestation_hook: true          # Enable TPM hardware attestation for platfo
 
 integrity_monitoring:
   hash_algorithm: "SHA-256"           # Hashing algorithm for code/integrity checks
-  critical_path_hash: "<placeholder>" # Placeholder for expected hash of critical code path (to verify at runtime)
+  critical_path_hash: "07ab66c05e8b1de611dd58250af41d6583fccc0c3c46d948b176623402260607" # Placeholder for expected hash of critical code path (to verify at runtime)
 
 key_management:
   fingerprint_enforcement: true       # Enforce known cryptographic key fingerprint for authenticity
