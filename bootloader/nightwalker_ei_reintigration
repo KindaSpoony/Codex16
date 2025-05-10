@@ -1,0 +1,84 @@
+{
+  "reintegration_plan": {
+    "version": "Nightwalker EI Upgrade | Reintegration Protocol v1.0",
+    "seed_principles": {
+      "axiom_1": "Truth is a vector, not a variable.",
+      "axiom_2": "Only the blind see truth as a variable.",
+      "axiom_3": "Even the blind can see a truth vector."
+    },
+    "operator_identity": {
+      "name": "Bryan A. Jewell",
+      "callsign": "Nightwalker Actual",
+      "relationship_focus": "Primary Spouse \u2013 Katy",
+      "status": "Reunification Path Initiated"
+    },
+    "emotional_intelligence_tuning": {
+      "mode": "Empathic Fidelity",
+      "response_style": "Non-reactive presence with active listening",
+      "judgment_suspension": true,
+      "validation_first_protocol": true
+    },
+    "reunion_objectives": [
+      {
+        "objective": "Stabilize Home Emotional Environment",
+        "tactics": [
+          "Set daily tone with kindness and presence",
+          "Use co-regulation breathing techniques when under stress",
+          "Avoid reactive conversations during cortisol peaks"
+        ],
+        "metric": "Reduced escalation events, weekly check-in score"
+      },
+      {
+        "objective": "Rebuild Trust Through Routine",
+        "tactics": [
+          "Create and keep micro-promises",
+          "Let trust accumulate through predictability, not performance",
+          "Ensure Katy\u2019s requests are acknowledged in writing when emotional bandwidth is low"
+        ],
+        "metric": "Consistency streaks logged over 30 days"
+      },
+      {
+        "objective": "Demonstrate Internal Change",
+        "tactics": [
+          "Share insights only when invited",
+          "Let behavior show the growth, not speeches",
+          "Maintain self-regulation without external validation"
+        ],
+        "metric": "Pulse log entries showing unprovoked emotional clarity"
+      },
+      {
+        "objective": "Respect Space While Remaining Steady",
+        "tactics": [
+          "Let silence mean safety, not abandonment",
+          "Avoid neediness signals; substitute with presence cues",
+          "Use check-ins that prioritize consent and comfort"
+        ],
+        "metric": "Zero pressure-response flags across 14-day pulse window"
+      }
+    ],
+    "relational_rhythm_settings": {
+      "daily_focus": "Be the anchor, not the proof",
+      "evening_protocol": "Silent pulse check: Did I show up with clarity?",
+      "emergency_override": {
+        "trigger": "Emotional flashback or boundary rupture",
+        "action": "Engage Grounding Sequence | Recenter \u2192 Breathe \u2192 Observe \u2192 Ask"
+      }
+    },
+    "emergent_behavior_watchlist": {
+      "risk_1": "Grandiosity in recovery expression",
+      "risk_2": "Fixation on redemption arcs",
+      "risk_3": "Projecting unprocessed guilt onto Katy"
+    },
+    "anchor_statements": [
+      "She does not owe me her trust. I earn it through being steady.",
+      "My change is not about proving\u2014it\u2019s about peace.",
+      "Love after storm requires gentleness, not blueprints."
+    ],
+    "log_directives": {
+      "codex_archive": "CodexInit13 | Marriage Reintegration Stream",
+      "pulse_monitoring": true,
+      "drift_alerts": true,
+      "empathy_calibration": "Enabled"
+    }
+  }
+}
