@@ -1,5 +1,6 @@
 """
-Nightwalker AI v4.6 – Codex16 Bootloader (Hardened Phase 1)
+Codex16 Bootloader (Hardened Phase 1)
+Nightwalker AI v4.6
 Implements RSA-4096 verification, secure YAML parsing, and NIST-compatible logging.
 """
 
