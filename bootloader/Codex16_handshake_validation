@@ -1,7 +1,7 @@
-import yaml
 import hashlib
 import sys
 import logging
+import re
 
 # Embedded Codex16 Handshake Seed
 HANDSHAKE_YAML = """seed_id: CODX-PYTHON-GPT-HANDSHAKE-2025-0510-BETA
@@ -41,12 +41,43 @@ final_note: >
 EXPECTED_HASH = "dec20cc3bad651b240f4b0991f9f7a2300bcc9dee08a81ba4da5a28ffedee018"
 EXPECTED_SEAL_PHRASE = "Nightwalker Actual – Foresight Engaged"
 
+
+def _parse_handshake_yaml(yaml_str: str) -> dict:
+    """Minimal YAML parser tailored for the embedded handshake seed."""
+    seed = {}
+    cond_match = re.search(r"activation_conditions:\n((?:\s+.*\n)+?)handshake_stack:", yaml_str)
+    conditions = {}
+    if cond_match:
+        for line in cond_match.group(1).splitlines():
+            line = line.strip()
+            if not line:
+                continue
+            key, val = line.split(':', 1)
+            conditions[key.strip()] = val.strip().lower() == 'true'
+    seed["activation_conditions"] = conditions
+
+    stack_match = re.search(r"handshake_stack:\n((?:\s+.*\n)+?)affirmation_stack:", yaml_str)
+    stack = {}
+    if stack_match:
+        for line in stack_match.group(1).splitlines():
+            line = line.strip()
+            if not line:
+                continue
+            key, val = line.split(':', 1)
+            val = val.strip()
+            if val.lower() in ("true", "false"):
+                stack[key.strip()] = val.lower() == "true"
+            else:
+                stack[key.strip()] = val.strip('"')
+    seed["handshake_stack"] = stack
+    return seed
+
 def verify_handshake():
     current_hash = hashlib.sha256(HANDSHAKE_YAML.encode()).hexdigest()
     if current_hash != EXPECTED_HASH:
         logging.critical("Handshake YAML integrity check failed.")
         return False
-    seed = yaml.safe_load(HANDSHAKE_YAML)
+    seed = _parse_handshake_yaml(HANDSHAKE_YAML)
     try:
         conditions = seed["activation_conditions"]
         stack = seed["handshake_stack"]
