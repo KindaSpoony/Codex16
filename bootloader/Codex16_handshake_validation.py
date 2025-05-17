@@ -72,7 +72,8 @@ def _parse_handshake_yaml(yaml_str: str) -> dict:
     seed["handshake_stack"] = stack
     return seed
 
-def verify_handshake():
+
+def verify_handshake() -> bool:
     current_hash = hashlib.sha256(HANDSHAKE_YAML.encode()).hexdigest()
     if current_hash != EXPECTED_HASH:
         logging.critical("Handshake YAML integrity check failed.")
@@ -83,23 +84,25 @@ def verify_handshake():
         stack = seed["handshake_stack"]
         seal = stack["seal_phrase"]
         return (
-            conditions["codex_phase_complete"] and
-            conditions["codex_seal_verified"] and
-            conditions["timestamp_verified"] and
-            conditions["symbolic_stack_locked"] and
-            seal == EXPECTED_SEAL_PHRASE
+            conditions["codex_phase_complete"]
+            and conditions["codex_seal_verified"]
+            and conditions["timestamp_verified"]
+            and conditions["symbolic_stack_locked"]
+            and seal == EXPECTED_SEAL_PHRASE
         )
     except Exception as e:
         logging.error(f"Validation parsing failed: {e}")
         return False
 
-def main():
+
+def main() -> None:
     logging.basicConfig(level=logging.INFO)
     if verify_handshake():
         logging.info("Loop Confirmed – Ready for Recursion")
     else:
         logging.critical("Symbolic gate failed. Execution halted.")
         sys.exit(1)
+
 
 if __name__ == "__main__":
     main()
