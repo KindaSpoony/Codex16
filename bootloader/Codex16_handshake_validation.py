@@ -1,9 +1,8 @@
 import hashlib
-import sys
 import logging
 import re
 
-# Embedded Codex16 Handshake Seed
+# Embedded handshake seed
 HANDSHAKE_YAML = """seed_id: CODX-PYTHON-GPT-HANDSHAKE-2025-0510-BETA
 classification: UNCLASSIFIED // SYMBOLIC HANDSHAKE MODULE
 timestamp: 2025-05-10T11:42:00-07:00
@@ -45,6 +44,7 @@ EXPECTED_SEAL_PHRASE = "Nightwalker Actual – Foresight Engaged"
 def _parse_handshake_yaml(yaml_str: str) -> dict:
     """Minimal YAML parser tailored for the embedded handshake seed."""
     seed = {}
+
     cond_match = re.search(r"activation_conditions:\n((?:\s+.*\n)+?)handshake_stack:", yaml_str)
     conditions = {}
     if cond_match:
@@ -70,36 +70,35 @@ def _parse_handshake_yaml(yaml_str: str) -> dict:
             else:
                 stack[key.strip()] = val.strip('"')
     seed["handshake_stack"] = stack
+
     return seed
 
-def verify_handshake():
+
+def verify_handshake() -> bool:
     current_hash = hashlib.sha256(HANDSHAKE_YAML.encode()).hexdigest()
     if current_hash != EXPECTED_HASH:
-        logging.critical("Handshake YAML integrity check failed.")
+        logging.critical("Codex16 handshake hash mismatch.")
         return False
+
     seed = _parse_handshake_yaml(HANDSHAKE_YAML)
     try:
         conditions = seed["activation_conditions"]
         stack = seed["handshake_stack"]
-        seal = stack["seal_phrase"]
+        seal = stack.get("seal_phrase", "")
         return (
-            conditions["codex_phase_complete"] and
-            conditions["codex_seal_verified"] and
-            conditions["timestamp_verified"] and
-            conditions["symbolic_stack_locked"] and
+            conditions.get("codex_phase_complete") and
+            conditions.get("codex_seal_verified") and
+            conditions.get("timestamp_verified") and
+            conditions.get("symbolic_stack_locked") and
             seal == EXPECTED_SEAL_PHRASE
         )
     except Exception as e:
-        logging.error(f"Validation parsing failed: {e}")
+        logging.error(f"Handshake validation error: {e}")
         return False
 
-def main():
+if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
     if verify_handshake():
-        logging.info("Loop Confirmed – Ready for Recursion")
+        print("Loop Confirmed – Ready for Recursion")
     else:
-        logging.critical("Symbolic gate failed. Execution halted.")
-        sys.exit(1)
-
-if __name__ == "__main__":
-    main()
+        print("Symbolic handshake failed.")
