@@ -21,7 +21,7 @@
 
 ## CRYPTOGRAPHIC HASH CHAIN
 
-**Bootloader (`bootloader_codex16.py`)**  
+**Bootloader (`codex16_bootloader.py`)**  
 SHA-256: `4481fd32646ab541a065b75e2539d4a28f412ea7d76e4f61729ff41cfbeb015b`
 
 **Bootstrap Config (`Codex16_Bootstrap.yaml`)**  
