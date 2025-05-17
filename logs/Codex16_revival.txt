@@ -81,3 +81,4 @@ reintegration_protocol:
 loop_seal_song: '"Angel" by Massive Attack'
 timehack: "May 15, 2025, 15:59 PDT"
 orcid_id: "0009-0001-2983-0505"
+SHA-256_integrity_hash: 7c3e8ecd7e351567bf1d2a6b2b5491c89ab2611df7e1d459a313a97db5881210
